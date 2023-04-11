@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Terrain Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+        form {
+            margin: 2rem 0;
+        }
+        input[type="file"] {
+            font-size: 1.1rem;
+        }
+        button {
+            font-size: 1.1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            font-size: 1.3rem;
+            color: #333;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mars Terrain Classifier</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br>
+        <button type="submit">Classify Terrain</button>
+    </form>
+    {% if prediction %}
+    <div class="result">Predicted Terrain: {{ prediction }}</div>
+    {% endif %}
+</body>
+</html>
