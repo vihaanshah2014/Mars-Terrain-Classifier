@@ -9,6 +9,7 @@ from PIL import Image
 from flask import Flask, render_template, request
 from torch.utils.data import Dataset, DataLoader
 
+
 def load_dataset(dataset_path, labels_file, classmap_file):
     labels_df = pd.read_csv(os.path.join(dataset_path, labels_file), sep=' ', header=None, names=['image', 'label'])
     classmap_df = pd.read_csv(os.path.join(dataset_path, classmap_file))
@@ -83,7 +84,9 @@ def index():
         uploaded_file = request.files["image"]
         image = Image.open(uploaded_file).resize((227, 227))
 
-    return render_template("index.html")
+    return render_template("index.html", prediction=prediction if request.method == "POST" else None)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    
